@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ChatGPTs</title>
+    <script src="./js/unocss.js"></script>
+    <script src="./js/vue.global.js"></script>
+  </head>
+
+  <body class="m-0 bg-[#171920]">
+    <div id="app">
+      <div class="container md mx-auto text-white text-left mt-20 mb-20">
+        <div class="px-4">
+          <img src="./icon/logo.svg" />
+          <h1
+            class="text-2xl text-transparent font-extrabold bg-clip-text bg-gradient-to-r from-sky-400 to-emerald-600"
+          >
+            ChatGPT导航
+          </h1>
+          <div class="mt-1 text-slate op-60">
+            <span>套壳ChatGPT,相信总有一个能用的</span><br />
+            <div class="flex">
+              <a
+                href="https://github.com/ninvfeng/chatgpts/issues/new"
+                target="_blank"
+                class="inline-flex text-sm text-slate-50 bg-slate/20 px-2 py-1 rounded-md transition-colors cursor-pointer hover:bg-slate/50 mt-2 underline-none"
+                >欢迎投稿</a
+              ><br />
+              <a
+                href="https://t.me/chatgpt_nb"
+                target="_blank"
+                class="inline-flex text-sm text-slate-50 bg-slate/20 px-2 py-1 rounded-md transition-colors cursor-pointer hover:bg-slate/50 mt-2 underline-none ml-2"
+                >加Telegram讨论</a
+              ><br />
+            </div>
+          </div>
+          <div class="grid grid-cols-1 p-0 text-lg text-slate">
+            <div
+              class="text-left flex w-full mt-4 bg-[#20293a] hover:bg-[#273042] py-4 rounded-lg"
+              v-for="v in sites"
+            >
+              <img class="rounded-lg ml-2 saturate-100" src="./icon/logo.svg" />
+              <div class="grid grid-cols-1 ml-2 w-full">
+                <div class="w-full flex justify-between">
+                  <span class="text-xl text-left font-bold text-slate-50"
+                    >{{v.name}}</span
+                  >
+                  <span
+                    v-if="v.status==='可用'"
+                    class="text-sm text-right mr-2 flex items-center"
+                  >
+                    <div class="bg-green-500 rounded-full w-2 h-2 mr-1"></div>
+                    {{v.status}}</span
+                  >
+                  <span
+                    v-else
+                    class="text-sm text-right mr-2 flex items-center"
+                  >
+                    <div class="bg-red-500 rounded-full w-2 h-2 mr-1"></div>
+                    {{v.status}}</span
+                  >
+                </div>
+
+                <span class="text-sm mt-2">
+                  链接:
+                  <a
+                    class="inline-flex items-center justify-center gap-1 text-sm text-slate bg-slate/20 px-2 py-1 rounded-md transition-colors cursor-pointer hover:bg-slate/50"
+                    :href="v.url"
+                    target="_blank"
+                    >{{v.url}}</a
+                  >
+                </span>
+                <span class="text-sm mt-2 flex items-center" v-if="v.github">
+                  <span class="hidden md:block">github: </span>
+                  <span class="hidden md:block">
+                    <a
+                      class="inline-flex items-center justify-center gap-1 text-sm text-slate bg-slate/20 px-2 py-1 rounded-md transition-colors cursor-pointer hover:bg-slate/50"
+                      :href="v.url"
+                      target="_blank"
+                      >{{v.github}}</a
+                    >
+                  </span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-gray-900 fixed left-0 bottom-0 right-0">
+        <div class="container md mx-auto text-white items-center op-60">
+          <p class="text-sm text-slate">
+            <a
+              class="text-slate border-none hover:border-dashed pl-2"
+              href="https://github.com/ninvfeng/chatgpts"
+              target="_blank"
+            >
+              Github源码
+            </a>
+            <span class="px-1">|</span>
+            <a
+              class="text-slate border-none hover:border-dashed"
+              href="https://t.me/chatgpt_nb"
+              target="_blank"
+            >
+              Telegram
+            </a>
+            <span class="px-1">|</span>
+            <a
+              class="text-slate border-none hover:border-dashed"
+              href="mailto:ninvfeng@gmail.com"
+              target="_blank"
+            >
+              如有侵权, 联系删除
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const { createApp } = Vue;
+
+      createApp({
+        data() {
+          return {
+            sites: [
+              {
+                name: "fastgpt",
+                url: "https://fastgpt.app",
+                github: "https://github.com/yuezk/chatgpt-mirror",
+                status: "可用",
+              },
+              {
+                name: "chat2ai",
+                url: "https://www.chat2ai.cn",
+                status: "可用",
+              },
+              {
+                name: "alpaca-bi",
+                url: "https://chat.alpaca-bi.com",
+                status: "可用",
+              },
+              {
+                name: "tgbot",
+                url: "https://chat.tgbot.co",
+                status: "可用",
+              },
+              {
+                name: "yqcloud",
+                url: "https://chat.yqcloud.top",
+                github: "https://github.com/binjie09/chatgpt-web",
+                status: "可用",
+              },
+              {
+                name: "ai117",
+                url: "https://ai117.com",
+                github: "https://github.com/binjie09/chatgpt-web",
+                status: "可用",
+              },
+              {
+                name: "ninvfeng",
+                url: "https://chat.ninvfeng.xyz",
+                github: "https://github.com/ninvfeng/chatgpt",
+                status: "可用",
+              },
+              {
+                name: "freegpt.cc",
+                url: "https://freegpt.cc",
+                status: "需要填key",
+              },
+              {
+                name: "ddiu",
+                url: "https://chatgpt.ddiu.me",
+                github: "https://github.com/ddiu8081/chatgpt-demo",
+                status: "已被墙",
+              },
+              {
+                name: "ai.ls",
+                url: "https://ai.ls",
+                status: "已被墙",
+              },
+              {
+                name: "chatpdf(传pdf后对话)",
+                url: "https://www.chatpdf.com/",
+                status: "可用",
+              },
+            ],
+          };
+        },
+      }).mount("#app");
+    </script>
+    <style>
+      html {
+        font-family: system-ui, sans-serif;
+        background-color: #171921;
+        color: #ffffff;
+      }
+      #app {
+        max-width: 60ch;
+        margin: 0 auto;
+      }
+    </style>
+  </body>
+</html>
