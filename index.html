@@ -21,6 +21,7 @@
           </h1>
           <div class="mt-1 text-slate op-60">
             <span>套壳ChatGPT汇总,相信总有一个能用的</span><br />
+            <span>注意:状态并不是实时状态...</span><br />
             <div class="flex">
               <a
                 href="https://github.com/ninvfeng/chatgpts/issues/new"
@@ -32,7 +33,7 @@
                 href="https://t.me/chatgpt_nb"
                 target="_blank"
                 class="inline-flex text-sm text-slate-50 bg-slate/20 px-2 py-1 rounded-md transition-colors cursor-pointer hover:bg-slate/50 mt-2 underline-none ml-2"
-                >加Telegram讨论</a
+                >加Telegram群讨论</a
               ><br />
             </div>
           </div>
@@ -44,7 +45,8 @@
               <img class="rounded-lg ml-2 saturate-100" src="./icon/logo.svg" />
               <div class="grid grid-cols-1 ml-2 w-full">
                 <div class="w-full flex justify-between">
-                  <span class="text-xl text-left font-bold text-slate-50"
+                  <span
+                    class="text-sm md:text-xl text-left font-bold text-slate-50"
                     >{{v.name}}</span
                   >
                   <span
@@ -92,7 +94,7 @@
         <div class="container md mx-auto text-white items-center op-60">
           <p class="text-sm text-slate">
             <a
-              class="text-slate border-none hover:border-dashed pl-2"
+              class="text-slate border-none pl-2"
               href="https://github.com/ninvfeng/chatgpts"
               target="_blank"
             >
@@ -100,7 +102,7 @@
             </a>
             <span class="px-1">|</span>
             <a
-              class="text-slate border-none hover:border-dashed"
+              class="text-slate border-none"
               href="https://t.me/chatgpt_nb"
               target="_blank"
             >
@@ -108,7 +110,7 @@
             </a>
             <span class="px-1">|</span>
             <a
-              class="text-slate border-none hover:border-dashed"
+              class="text-slate border-none"
               href="mailto:ninvfeng@gmail.com"
               target="_blank"
             >
@@ -143,27 +145,22 @@
                 status: "可用",
               },
               {
-                name: "tgbot",
-                url: "https://chat.tgbot.co",
-                status: "可用",
-              },
-              {
                 name: "yqcloud",
                 url: "https://chat.yqcloud.top",
                 github: "https://github.com/binjie09/chatgpt-web",
                 status: "可用",
               },
               {
-                name: "ai117",
-                url: "https://ai117.com",
-                github: "https://github.com/binjie09/chatgpt-web",
-                status: "可用",
-              },
-              {
-                name: "ninvfeng",
+                name: "ninvfeng(本站)",
                 url: "https://chat.ninvfeng.xyz",
                 github: "https://github.com/ninvfeng/chatgpt",
                 status: "可用",
+              },
+              {
+                name: "ai117",
+                url: "https://ai117.com",
+                github: "https://github.com/binjie09/chatgpt-web",
+                status: "可体验,需要key,有广告",
               },
               {
                 name: "freegpt.cc",
@@ -182,12 +179,28 @@
                 status: "已被墙",
               },
               {
+                name: "ChatGPT Vercel",
+                url: "https://vercel-chatgpt-github.vercel.app",
+                github: "https://github.com/ourongxing/chatgpt-vercel",
+                status: "已被墙,需填key",
+              },
+              {
                 name: "chatpdf(传pdf后对话)",
                 url: "https://www.chatpdf.com/",
                 status: "可用",
               },
+              {
+                name: "tgbot",
+                url: "https://chat.tgbot.co",
+                status: "额度已用完",
+              },
             ],
           };
+        },
+        created() {
+          setTimeout(() => {
+            document.getElementById("app").style.display = "block";
+          }, 300);
         },
       }).mount("#app");
     </script>
@@ -200,7 +213,14 @@
       #app {
         max-width: 60ch;
         margin: 0 auto;
+        display: none;
       }
     </style>
+    <script
+      async
+      defer
+      src="https://analytics.umami.is/script.js"
+      data-website-id="ebb52698-e65c-47f3-9d80-7b41c09ff6d0"
+    ></script>
   </body>
 </html>
