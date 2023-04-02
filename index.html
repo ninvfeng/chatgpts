@@ -1,290 +1,338 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ChatGPT Web合集</title>
+    <script src="./js/unocss.js"></script>
+    <script src="./js/vue.global.js"></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ChatGPT Web合集</title>
-  <script src="./js/unocss.js"></script>
-  <script src="./js/vue.global.js"></script>
-</head>
-
-<body class="m-0 bg-[#171920]">
-  <div id="app">
-    <div class="container md mx-auto text-white text-left mt-20 mb-20">
-      <div class="px-4">
-        <img src="./icon/logo.svg" />
-        <h1 class="text-2xl text-transparent font-extrabold bg-clip-text bg-gradient-to-r from-sky-400 to-emerald-600">
-          ChatGPT Web合集
-        </h1>
-        <div class="mt-1 text-slate op-60">
-          <span>ChatGPT Web汇总</span><br />
-          <span>状态并不是实时的...</span><br />
-          <!-- <span>额度消耗得太快了😓, 本站额度已用完</span><br /> -->
-          <div class="flex">
-            <a href="https://support.qq.com/product/530778" target="_blank"
-              class="inline-flex text-sm text-slate-50 bg-slate/20 px-2 py-1 rounded-md transition-colors cursor-pointer hover:bg-slate/50 mt-2 underline-none">欢迎投稿&反馈</a><br />
-            <a href="https://t.me/useaiapp" target="_blank"
-              class="inline-flex text-sm text-slate-50 bg-slate/20 px-2 py-1 rounded-md transition-colors cursor-pointer hover:bg-slate/50 mt-2 underline-none ml-2">加Telegram群讨论</a><br />
-          </div>
-        </div>
-        <div class="grid grid-cols-1 p-0 text-lg text-slate">
-          <div class="text-left flex w-full mt-4 bg-[#20293a] hover:bg-[#273042] py-4 rounded-lg" v-for="v in sites">
-            <img class="rounded-lg ml-2 saturate-100" src="./icon/logo.svg" />
-            <div class="grid grid-cols-1 ml-2 w-full">
-              <div class="w-full flex justify-between">
-                <span class="text-sm md:text-xl text-left font-bold text-slate-50">{{v.name}}</span>
-                <span v-if="v.status==='可用'" class="text-sm text-right mr-2 flex items-center">
-                  <div class="bg-green-500 rounded-full w-2 h-2 mr-1"></div>
-                  {{v.status}}
-                </span>
-                <span v-else class="text-sm text-right mr-2 flex items-center">
-                  <div class="bg-red-500 rounded-full w-2 h-2 mr-1"></div>
-                  {{v.status}}
-                </span>
-              </div>
-
-              <span class="text-sm mt-2">
-                链接:
-                <a class="inline-flex items-center justify-center gap-1 text-sm text-slate bg-slate/20 px-2 py-1 rounded-md transition-colors cursor-pointer hover:bg-slate/50"
-                  :href="v.url" target="_blank">{{v.url}}</a>
-              </span>
-              <span class="text-sm mt-2 flex items-center" v-if="v.github">
-                <span class="hidden md:block">github: </span>
-                <span class="hidden md:block">
-                  <a class="inline-flex items-center justify-center gap-1 text-sm text-slate bg-slate/20 px-2 py-1 rounded-md transition-colors cursor-pointer hover:bg-slate/50"
-                    :href="v.url" target="_blank">{{v.github}}</a>
-                </span>
-              </span>
+  <body class="m-0 bg-[#171920]">
+    <div id="app">
+      <div class="container md mx-auto text-white text-left mt-20 mb-20">
+        <div class="px-4">
+          <img src="./icon/logo.svg" />
+          <h1
+            class="text-2xl text-transparent font-extrabold bg-clip-text bg-gradient-to-r from-sky-400 to-emerald-600"
+          >
+            ChatGPT Web合集
+          </h1>
+          <div class="mt-1 text-slate op-60">
+            <span>ChatGPT Web汇总</span><br />
+            <span>状态并不是实时的...</span><br />
+            <!-- <span>额度消耗得太快了😓, 本站额度已用完</span><br /> -->
+            <div class="flex">
+              <a
+                href="https://support.qq.com/product/530778"
+                target="_blank"
+                class="inline-flex text-sm text-slate-50 bg-slate/20 px-2 py-1 rounded-md transition-colors cursor-pointer hover:bg-slate/50 mt-2 underline-none"
+                >欢迎投稿&反馈</a
+              ><br />
+              <a
+                href="https://t.me/useaiapp"
+                target="_blank"
+                class="inline-flex text-sm text-slate-50 bg-slate/20 px-2 py-1 rounded-md transition-colors cursor-pointer hover:bg-slate/50 mt-2 underline-none ml-2"
+                >加Telegram群讨论</a
+              ><br />
             </div>
           </div>
+          <div class="grid grid-cols-1 p-0 text-lg text-slate">
+            <div
+              class="text-left flex w-full mt-4 bg-[#20293a] hover:bg-[#273042] py-4 rounded-lg"
+              v-for="v in sites"
+            >
+              <img class="rounded-lg ml-2 saturate-100" src="./icon/logo.svg" />
+              <div class="grid grid-cols-1 ml-2 w-full">
+                <div class="w-full flex justify-between">
+                  <span
+                    class="text-sm md:text-xl text-left font-bold text-slate-50"
+                    >{{v.name}}</span
+                  >
+                  <span
+                    v-if="v.status==='可用'"
+                    class="text-sm text-right mr-2 flex items-center"
+                  >
+                    <div class="bg-green-500 rounded-full w-2 h-2 mr-1"></div>
+                    {{v.status}}
+                  </span>
+                  <span
+                    v-else
+                    class="text-sm text-right mr-2 flex items-center"
+                  >
+                    <div class="bg-red-500 rounded-full w-2 h-2 mr-1"></div>
+                    {{v.status}}
+                  </span>
+                </div>
+
+                <span class="text-sm mt-2">
+                  链接:
+                  <a
+                    class="inline-flex items-center justify-center gap-1 text-sm text-slate bg-slate/20 px-2 py-1 rounded-md transition-colors cursor-pointer hover:bg-slate/50"
+                    :href="v.url"
+                    target="_blank"
+                    >{{v.url}}</a
+                  >
+                </span>
+                <span class="text-sm mt-2 flex items-center" v-if="v.github">
+                  <span class="hidden md:block">github: </span>
+                  <span class="hidden md:block">
+                    <a
+                      class="inline-flex items-center justify-center gap-1 text-sm text-slate bg-slate/20 px-2 py-1 rounded-md transition-colors cursor-pointer hover:bg-slate/50"
+                      :href="v.url"
+                      target="_blank"
+                      >{{v.github}}</a
+                    >
+                  </span>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="text-center w-full">
+            <a
+              class="text-slate border-none mx-auto text-xs"
+              href="mailto:ninvfeng@gmail.com"
+              target="_blank"
+            >
+              如有侵权，联系删除
+            </a>
+          </div>
         </div>
-        <div class="text-center w-full">
-          <a class="text-slate border-none mx-auto text-xs" href="mailto:ninvfeng@gmail.com" target="_blank">
-            如有侵权，联系删除
-          </a>
+      </div>
+      <div class="bg-gray-900 fixed left-0 bottom-0 right-0">
+        <div class="container md mx-auto text-white items-center op-60">
+          <p class="text-sm text-slate">
+            <a
+              class="text-slate border-none pl-2"
+              href="https://github.com/ninvfeng/chatgpts"
+              target="_blank"
+            >
+              Github源码
+            </a>
+            <span class="px-1">|</span>
+            <a
+              class="text-slate border-none"
+              href="https://t.me/useaiapp"
+              target="_blank"
+            >
+              Telegram
+            </a>
+            <span class="px-1">|</span>
+            <a
+              class="text-slate border-none"
+              href="mailto:ninvfeng@gmail.com"
+              target="_blank"
+            >
+              ninvfeng@gmail.com
+            </a>
+          </p>
         </div>
       </div>
     </div>
-    <div class="bg-gray-900 fixed left-0 bottom-0 right-0">
-      <div class="container md mx-auto text-white items-center op-60">
-        <p class="text-sm text-slate">
-          <a class="text-slate border-none pl-2" href="https://github.com/ninvfeng/chatgpts" target="_blank">
-            Github源码
-          </a>
-          <span class="px-1">|</span>
-          <a class="text-slate border-none" href="https://t.me/useaiapp" target="_blank">
-            Telegram
-          </a>
-          <span class="px-1">|</span>
-          <a class="text-slate border-none" href="mailto:ninvfeng@gmail.com" target="_blank">
-            ninvfeng@gmail.com
-          </a>
-        </p>
-      </div>
-    </div>
-  </div>
 
-  <script>
-    const { createApp } = Vue;
+    <script>
+      const { createApp } = Vue;
 
-    createApp({
-      data() {
-        return {
-          sites: [
-            {
-              name: "gpthink",
-              url: "http://www.gpthink.cn",
-              status: "可用",
-            },
-            {
-              name: "binjie",
-              url: "https://chat.binjie.site:7777/#/chat/",
-              status: "可用",
-            },
-            {
-              name: "xeasy",
-              url: "https://chat8.xeasy.me",
-              status: "可用",
-            },
-            {
-              name: "wobcw",
-              url: "https://chat.wobcw.com",
-              status: "可用",
-            },
-            {
-              name: "geekr",
-              url: "https://chat2.geekr.dev",
-              status: "不可用",
-            },
-            {
-              name: "geekr",
-              url: "https://chat2.geekr.dev",
-              status: "不可用",
-            },
-            {
-              name: "xeasy",
-              url: "https://chat2.xeasy.me",
-              status: "不可用",
-            },
-            {
-              name: "newb",
-              url: "http://newb.site/chatgpt",
-              status: "不可用",
-            },
-            {
-              name: "h7ml",
-              url: "https://gpt.h7ml.cn",
-              status: "不可用",
-            },
-            {
-              name: "trychatgp",
-              url: "https://trychatgp.com",
-              status: "不可用",
-            },
-            {
-              name: "AI.LS(限额)",
-              url: "https://chatmate.network",
-              status: "不可用",
-            },
-            {
-              name: "aitoolgpt",
-              url: "https://www.aitoolgpt.com",
-              github: "https://github.com/ourongxing/chatgpt-vercel",
-              status: "不可用",
-            },
-            {
-              name: "qa.js",
-              url: "https://qa.js.cn",
-              github: "https://github.com/yesmore/QA",
-              status: "不可用",
-            },
-            {
-              name: "xeasy",
-              url: "https://chat1.xeasy.me",
-              status: "不可用",
-            },
-            {
-              name: "freechatgpt(可编辑对话)",
-              url: "https://freechatgpt.chat",
-              github: "https://github.com/ztjhz/ChatGPTFreeApp",
-              status: "额度已用完",
-            },
-            {
-              name: "poshist",
-              url: "https://chatgpt.poshist.cn",
-              status: "无响应",
-            },
-            {
-              name: "wxredcover",
-              url: "https://chat.wxredcover.cn",
-              status: "要关注公众号",
-            },
-            {
-              name: "zecoba",
-              url: "https://chat.zecoba.cn",
-              status: "需登录",
-            },
-            {
-              name: "ninvfeng(本站)",
-              url: "https://chat.ninvfeng.xyz",
-              github: "https://github.com/ninvfeng/chatgpt",
-              status: "已被墙",
-            },
-            {
-              name: "theb",
-              url: "https://chat.theb.ai",
-              github: "https://github.com/Chanzhaoyu/chatgpt-web",
-              status: "已被墙",
-            },
-            {
-              name: "jingran",
-              url: "https://chat.jingran.cn",
-              status: "已被墙",
-            },
-            {
-              name: "chatforai",
-              url: "https://chatforai.com",
-              status: "已被墙",
-            },
-            {
-              name: "xc",
-              url: "https://xc.com",
-              status: "已被墙",
-            },
-            {
-              name: "chunkiu",
-              url: "https://chatgpt.chunkiu.hk",
-              status: "无响应",
-            },
-            {
-              name: "chat2ai",
-              url: "https://www.chat2ai.cn",
-              status: "不可用",
-            },
-            {
-              name: "aigcfun",
-              url: "https://aigcfun.com",
-              status: "需要KEY",
-            },
-            {
-              name: "forchange",
-              url: "https://chat.forchange.cn",
-              status: "需要KEY",
-            },
-            {
-              name: "ai.ls",
-              url: "https://ai.ls",
-              status: "翻墙,限额",
-            },
-            {
-              name: "ai.ci",
-              url: "https://ai.ci",
-              status: "翻墙,限额",
-            },
-            {
-              name: "freegpt",
-              url: "https://freegpt.one",
-              status: "翻墙",
-            },
-            {
-              name: "ddiu",
-              url: "https://chatgpt.ddiu.me",
-              github: "https://github.com/ddiu8081/chatgpt-demo",
-              status: "不可用",
-            },
-            {
-              name: "ChatGPT Vercel",
-              url: "https://vercel-chatgpt-github.vercel.app",
-              github: "https://github.com/ourongxing/chatgpt-vercel",
-              status: "翻墙",
-            },
-          ],
-        };
-      },
-      created() {
-        setTimeout(() => {
-          document.getElementById("app").style.display = "block";
-        }, 300);
-      },
-    }).mount("#app");
-  </script>
-  <style>
-    html {
-      font-family: system-ui, sans-serif;
-      background-color: #171921;
-      color: #ffffff;
-    }
+      createApp({
+        data() {
+          return {
+            sites: [
+              {
+                name: "gpthink",
+                url: "http://www.gpthink.cn?ref=chatgpts.ninvfeng.xyz",
+                status: "可用",
+              },
+              {
+                name: "binjie",
+                url: "https://chat.binjie.site:7777/#/chat/",
+                status: "可用",
+              },
+              {
+                name: "xeasy",
+                url: "https://chat8.xeasy.me",
+                status: "可用",
+              },
+              {
+                name: "wobcw",
+                url: "https://chat.wobcw.com",
+                status: "可用",
+              },
+              {
+                name: "geekr",
+                url: "https://chat2.geekr.dev",
+                status: "不可用",
+              },
+              {
+                name: "geekr",
+                url: "https://chat2.geekr.dev",
+                status: "不可用",
+              },
+              {
+                name: "xeasy",
+                url: "https://chat2.xeasy.me",
+                status: "不可用",
+              },
+              {
+                name: "newb",
+                url: "http://newb.site/chatgpt",
+                status: "不可用",
+              },
+              {
+                name: "h7ml",
+                url: "https://gpt.h7ml.cn",
+                status: "不可用",
+              },
+              {
+                name: "trychatgp",
+                url: "https://trychatgp.com",
+                status: "不可用",
+              },
+              {
+                name: "AI.LS(限额)",
+                url: "https://chatmate.network",
+                status: "不可用",
+              },
+              {
+                name: "aitoolgpt",
+                url: "https://www.aitoolgpt.com",
+                github: "https://github.com/ourongxing/chatgpt-vercel",
+                status: "不可用",
+              },
+              {
+                name: "qa.js",
+                url: "https://qa.js.cn",
+                github: "https://github.com/yesmore/QA",
+                status: "不可用",
+              },
+              {
+                name: "xeasy",
+                url: "https://chat1.xeasy.me",
+                status: "不可用",
+              },
+              {
+                name: "freechatgpt(可编辑对话)",
+                url: "https://freechatgpt.chat",
+                github: "https://github.com/ztjhz/ChatGPTFreeApp",
+                status: "额度已用完",
+              },
+              {
+                name: "poshist",
+                url: "https://chatgpt.poshist.cn",
+                status: "无响应",
+              },
+              {
+                name: "wxredcover",
+                url: "https://chat.wxredcover.cn",
+                status: "要关注公众号",
+              },
+              {
+                name: "zecoba",
+                url: "https://chat.zecoba.cn",
+                status: "需登录",
+              },
+              {
+                name: "ninvfeng(本站)",
+                url: "https://chat.ninvfeng.xyz",
+                github: "https://github.com/ninvfeng/chatgpt",
+                status: "已被墙",
+              },
+              {
+                name: "theb",
+                url: "https://chat.theb.ai",
+                github: "https://github.com/Chanzhaoyu/chatgpt-web",
+                status: "已被墙",
+              },
+              {
+                name: "jingran",
+                url: "https://chat.jingran.cn",
+                status: "已被墙",
+              },
+              {
+                name: "chatforai",
+                url: "https://chatforai.com",
+                status: "已被墙",
+              },
+              {
+                name: "xc",
+                url: "https://xc.com",
+                status: "已被墙",
+              },
+              {
+                name: "chunkiu",
+                url: "https://chatgpt.chunkiu.hk",
+                status: "无响应",
+              },
+              {
+                name: "chat2ai",
+                url: "https://www.chat2ai.cn",
+                status: "不可用",
+              },
+              {
+                name: "aigcfun",
+                url: "https://aigcfun.com",
+                status: "需要KEY",
+              },
+              {
+                name: "forchange",
+                url: "https://chat.forchange.cn",
+                status: "需要KEY",
+              },
+              {
+                name: "ai.ls",
+                url: "https://ai.ls",
+                status: "翻墙,限额",
+              },
+              {
+                name: "ai.ci",
+                url: "https://ai.ci",
+                status: "翻墙,限额",
+              },
+              {
+                name: "freegpt",
+                url: "https://freegpt.one",
+                status: "翻墙",
+              },
+              {
+                name: "ddiu",
+                url: "https://chatgpt.ddiu.me",
+                github: "https://github.com/ddiu8081/chatgpt-demo",
+                status: "不可用",
+              },
+              {
+                name: "ChatGPT Vercel",
+                url: "https://vercel-chatgpt-github.vercel.app",
+                github: "https://github.com/ourongxing/chatgpt-vercel",
+                status: "翻墙",
+              },
+            ],
+          };
+        },
+        created() {
+          setTimeout(() => {
+            document.getElementById("app").style.display = "block";
+          }, 300);
+        },
+      }).mount("#app");
+    </script>
+    <style>
+      html {
+        font-family: system-ui, sans-serif;
+        background-color: #171921;
+        color: #ffffff;
+      }
 
-    #app {
-      max-width: 60ch;
-      margin: 0 auto;
-      display: none;
-    }
-  </style>
-  <script async defer src="https://analytics.umami.is/script.js"
-    data-website-id="ebb52698-e65c-47f3-9d80-7b41c09ff6d0"></script>
-</body>
-
+      #app {
+        max-width: 60ch;
+        margin: 0 auto;
+        display: none;
+      }
+    </style>
+    <script
+      async
+      defer
+      src="https://analytics.umami.is/script.js"
+      data-website-id="ebb52698-e65c-47f3-9d80-7b41c09ff6d0"
+    ></script>
+  </body>
 </html>
